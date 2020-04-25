@@ -1,12 +1,11 @@
-import { action, computed, observable, runInAction, toJS } from "mobx";
-import Todo, { ITodo, PendingState } from "./Todo";
-import { todoService, ToDoService } from "../Services";
-import uuid from "react-native-uuid";
+import {action, computed, observable, runInAction, toJS} from "mobx";
+import Todo, {ITodo, PendingState} from "../models/Todo";
+import {todoService, ToDoService} from "../services";
 
 export enum Filters {
 
 }
-export class TodoListStore {
+export default class TodoListStore {
 	@observable list: Todo[] = [];
 	@observable state: PendingState = PendingState.DONE;
 	@observable filters: Filters[] = [];
@@ -22,10 +21,12 @@ export class TodoListStore {
 
 	@action
 	addTodo = async (todo: ITodo) => {
+		console.log('hello g=addd')
 		try {
-			todo.id = uuid.v1();
+			todo.id = new Date().getTime().toString();
 			this.updateState(PendingState.PENDING);
 			const created = await this.service.createToDo(todo);
+			console.log('cre', created);
 			runInAction(() => {
 				const newTodo = new Todo(created);
 				this.list.push(newTodo);
@@ -57,11 +58,14 @@ export class TodoListStore {
 
 	@action
 	getAllTodos = async () => {
+		console.log('get all')
 		try {
 			this.updateState(PendingState.PENDING);
 			const todos: ITodo[] = await this.service.getAllToDos();
 			runInAction(() => {
-				todos.forEach((todo: ITodo) => this.list.push(new Todo(todo)));
+				const newTodos: Todo[] = [];
+				todos.forEach((todo: ITodo) => newTodos.push(new Todo(todo)));
+				this.list = newTodos;
 				this.updateState(PendingState.DONE)
 			})
 		} catch(e) {
@@ -72,13 +76,18 @@ export class TodoListStore {
 	};
 
 	@action
-	updateTodo = async (todo: Todo) => {
+	updateTodo = async (updatedTodo: ITodo, oldTodo: Todo) => {
 		try {
 			this.updateState(PendingState.PENDING);
-			const parsedTodo = toJS(todo) as ITodo;
-			const created = await this.service.updateToDo(parsedTodo);
+			const created = await this.service.updateToDo(updatedTodo);
 			runInAction(() => {
-				todo.updateTodo(created);
+				this.list.map((todo: Todo) => {
+					if(oldTodo.id === todo.id) {
+						console.log('updating, ', todo)
+						todo.updateTodo(created);
+					}
+				});
+				console.log(this.list.slice());
 				this.updateState(PendingState.DONE);
 			})
 		} catch (e) {
@@ -88,6 +97,14 @@ export class TodoListStore {
 			})
 		}
 	};
+
+	@action
+	toggleComplete = async (todo: Todo) => {
+		todo.toggleComplete();
+		const updatedTodo: ITodo = toJS(todo);
+		await this.updateTodo(updatedTodo, todo)
+	};
+
 
 
 	@computed
@@ -103,5 +120,15 @@ export class TodoListStore {
 	@computed
 	get lateToDos(): Todo[] {
 		return this.list.filter(todo => todo.late);
+	}
+
+	@computed
+	get isLoading(): boolean {
+		return this.state === PendingState.PENDING;
+	}
+
+	@computed
+	get isError(): boolean {
+		return this.state === PendingState.ERROR;
 	}
 }

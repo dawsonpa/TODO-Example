@@ -1,7 +1,5 @@
-import { observable, action, computed, flow} from "mobx";
-import { ToDoService, todoService }  from 'src/Services'
-import uuid from 'react-native-uuid'
-import BaseService from "../Services/BaseService";
+import { observable, action, computed} from "mobx";
+import { ToDoService, todoService }  from '../services'
 
 export enum PendingState  {
 	PENDING = 'pending',
@@ -12,15 +10,15 @@ export enum PendingState  {
 export interface ITodo {
 	name?: string;
 	description?: string;
-	targetDate?: Date | string;
-	completionDate?: Date | string;
+	targetDate?: Date | string | null;
+	completionDate?: Date | string | null;
 	state?: PendingState;
 	id?: string
 
 }
 
 class Todo {
-	readonly id: string;
+	id: string;
 	service: ToDoService = todoService;
 
 	@observable name: string = '';
@@ -31,11 +29,12 @@ class Todo {
 
 	constructor(todo: ITodo) {
 		this.updateTodo(todo);
+
 		const { id } = todo;
 		if(id) {
 			this.id = id;
 		} else {
-			this.id = uuid.v1();
+			this.id = new Date().getTime().toString()
 		}
 	}
 
@@ -45,13 +44,21 @@ class Todo {
 	};
 
 	@action
-	updateTargetDate = (targetDate: Date | string) => {
-		this.targetDate = new Date(targetDate);
+	updateTargetDate = (targetDate: Date | string | null) => {
+		if(targetDate) {
+			this.targetDate = new Date(targetDate);
+		} else {
+			this.targetDate = null;
+		}
 	};
 
 	@action
-	updateCompletionDate = (completionDate: Date | string) => {
-		this.completionDate = new Date(completionDate);
+	updateCompletionDate = (completionDate: Date | string | null) => {
+		if(completionDate) {
+			this.completionDate = new Date(completionDate);
+		} else {
+			this.completionDate = null;
+		}
 	};
 
 	@action
@@ -86,6 +93,13 @@ class Todo {
 			this.updateTargetDate(targetDate);
 		}
 	};
+	@action
+	toggleComplete = () => {
+		console.log('init', this.completionDate)
+		const completionDate = this.completionDate ? null : new Date();
+		this.updateCompletionDate(completionDate)
+		console.log('yoooof ain', this.completionDate)
+	}
 	@computed
 	get completed() {
 		return !!this.completionDate;
@@ -93,7 +107,11 @@ class Todo {
 
 	@computed
 	get late(): boolean {
-		return this.completionDate && this.targetDate && this.completionDate.getTime() < this.targetDate.getTime() ? true : false;
+		const currentDate = new Date();
+		if(!this.completionDate && this.targetDate) {
+			return currentDate.getTime() > this.targetDate.getTime()
+		}
+		return this.completionDate && this.targetDate && this.completionDate.getTime() > this.targetDate.getTime() ? true : false;
 	}
 
 }

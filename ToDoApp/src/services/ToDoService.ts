@@ -1,7 +1,7 @@
 import BaseService from "./BaseService";
-import {ITodo} from "../Models/Todo";
+import {ITodo} from "../models/Todo";
 
-export const TODOS_KEY = '@todos'
+export const TODOS_KEY = '@todos';
 
 export default class ToDoService extends BaseService {
 	readonly storageKey: string = TODOS_KEY;
@@ -13,9 +13,12 @@ export default class ToDoService extends BaseService {
 	}
 
 	async createToDo(val: ITodo) {
+		console.log('begining to create', val, 'vall');
 		const todos = await this.getAllToDos();
+		console.log(todos, 'todont')
 		todos.push(val);
-		const result = await this.update(this.storageKey, JSON.stringify(todos));
+		const result = await this.create(this.storageKey, JSON.stringify(todos));
+		console.log(result, 'res')
 		const updatedTodos = JSON.parse(result);
 		const updatedToDo = updatedTodos.find(((todo: ITodo) => todo.id ===val.id));
 		return updatedToDo;
@@ -30,8 +33,12 @@ export default class ToDoService extends BaseService {
 	}
 
 	async getAllToDos() {
-		const todos = await this.get(this.storageKey);
-		return typeof todos === 'string' ? JSON.parse(todos): []
+		const result = await this.get(this.storageKey);
+		console.log(result, 'all');
+		const todos = result ? JSON.parse(result): [];
+		console.log(todos, 'after');
+		return todos;
+
 	}
 
 	async updateToDo(val: ITodo) {
@@ -45,7 +52,7 @@ export default class ToDoService extends BaseService {
 			return todo;
 		})
 
-		const result = await this.update(this.storageKey, JSON.stringify(updatedTodos));
+		const result = await this.create(this.storageKey, JSON.stringify(updatedTodos));
 		const resultTodos = JSON.parse(result);
 		const updatedToDo = resultTodos.find(((todo: ITodo) => todo.id === val.id));
 		return updatedToDo;
