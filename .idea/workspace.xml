@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfa0f356-aed6-41d0-8d9d-adc3deb5b610" name="Default Changelist" comment="5">
-      <change afterPath="$PROJECT_DIR$/ToDoApp/src/screens/TodoScreen/TodoScreenStyle.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToDoApp/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/ios/Podfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ToDoApp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoApp/src/components/AddEditToDoForm/AddEditTodoForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/src/components/AddEditToDoForm/AddEditTodoForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoApp/src/components/TodoItem/TodoItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/src/components/TodoItem/TodoItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoApp/src/components/TodoList/TodoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/src/components/TodoList/TodoList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoApp/src/context/TodoListStoreContext.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/src/context/TodoListStoreContext.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoApp/src/models/Todo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/src/models/Todo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoApp/src/screens/TodoScreen/TodoScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/src/screens/TodoScreen/TodoScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoApp/src/services/ToDoService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/src/services/ToDoService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoApp/src/stores/TodoListStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/src/stores/TodoListStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoApp/src/theme/baseStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/src/theme/baseStyles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoApp/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ToDoApp/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -64,7 +54,7 @@
             <entry file="file://$PROJECT_DIR$/ToDoApp/src/theme/baseStyles.ts">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="120">
-                  <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+                  <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
                 </state>
               </provider>
             </entry>
@@ -73,7 +63,7 @@
             <entry file="file://$PROJECT_DIR$/ToDoApp/src/services/ToDoService.ts">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="180">
-                  <caret line="12" column="3" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+                  <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
                   <folding>
                     <element signature="e#0#40#0" expanded="true" />
                   </folding>
@@ -97,7 +87,7 @@
             <entry file="file://$PROJECT_DIR$/ToDoApp/src/components/TodoList/TodoList.tsx">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="276">
-                  <caret line="47" column="23" lean-forward="true" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+                  <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
                   <folding>
                     <element signature="e#0#32#0" expanded="true" />
                   </folding>
@@ -108,8 +98,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ToDoApp/src/stores/TodoListStore.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1530">
-                  <caret line="102" column="38" selection-start-line="102" selection-start-column="38" selection-end-line="102" selection-end-column="38" />
+                <state relative-caret-position="300">
+                  <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
                   <folding>
                     <element signature="e#0#69#0" expanded="true" />
                   </folding>
@@ -146,7 +136,7 @@
             <entry file="file://$PROJECT_DIR$/ToDoApp/tsconfig.json">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="34">
-                  <caret line="3" column="23" lean-forward="true" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+                  <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
                 </state>
               </provider>
             </entry>
@@ -179,7 +169,7 @@
             <entry file="file://$PROJECT_DIR$/ToDoApp/src/screens/TodoScreen/TodoScreen.tsx">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="134">
-                  <caret line="33" column="42" lean-forward="true" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+                  <caret line="33" column="42" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
                   <folding>
                     <element signature="e#0#40#0" expanded="true" />
                   </folding>
@@ -199,7 +189,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ToDoApp/src/stores/TodoListStore.ts">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="-166">
@@ -231,20 +221,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ToDoApp/package.json">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="135">
-                  <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+                <state relative-caret-position="225">
+                  <caret line="15" column="6" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="29" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ToDoApp/src/screens/App.tsx">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/ToDoApp/src/stores/index.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="313">
-                  <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
-                  <folding>
-                    <element signature="e#217#256#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="30">
+                  <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -330,8 +317,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1736" />
-    <option name="y" value="56" />
+    <option name="x" value="1877" />
+    <option name="y" value="27" />
     <option name="width" value="1680" />
     <option name="height" value="1015" />
   </component>
@@ -364,29 +351,7 @@
               <item name="TODO-Example" type="462c0819:PsiDirectoryNode" />
               <item name="ToDoApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TODO-Example" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TODO-Example" type="462c0819:PsiDirectoryNode" />
-              <item name="ToDoApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="TodoList" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TODO-Example" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TODO-Example" type="462c0819:PsiDirectoryNode" />
-              <item name="ToDoApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="stores" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TODO-Example" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TODO-Example" type="462c0819:PsiDirectoryNode" />
-              <item name="ToDoApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="theme" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -433,18 +398,17 @@
       <option name="presentableId" value="Default" />
       <updated>1587582054259</updated>
       <workItem from="1587582057461" duration="30028000" />
-      <workItem from="1587665191202" duration="82999000" />
+      <workItem from="1587665191202" duration="83957000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113027000" />
+    <option name="totallyTimeSpent" value="113985000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1903" y="78" width="1680" height="1015" extended-state="0" />
-    <editor active="true" />
+    <frame x="1877" y="27" width="1680" height="1015" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24954791" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24954791" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -457,7 +421,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.30877572" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.30877572" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -558,13 +522,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ToDoApp/src/stores/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -673,27 +630,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ToDoApp/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ToDoApp/src/theme/baseStyles.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ToDoApp/src/components/AddEditToDoForm/AddEditTodoForm.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="90">
+          <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -710,7 +657,7 @@
     <entry file="file://$PROJECT_DIR$/ToDoApp/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="3" column="23" lean-forward="true" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -741,7 +688,7 @@
     <entry file="file://$PROJECT_DIR$/ToDoApp/src/services/ToDoService.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="12" column="3" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
@@ -750,8 +697,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ToDoApp/src/screens/TodoScreen/TodoScreen.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="33" column="42" lean-forward="true" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+        <state relative-caret-position="182">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
@@ -761,7 +708,7 @@
     <entry file="file://$PROJECT_DIR$/ToDoApp/src/components/TodoList/TodoList.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
-          <caret line="47" column="23" lean-forward="true" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
@@ -775,9 +722,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ToDoApp/yarn-error.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ToDoApp/yarn.lock">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ToDoApp/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ToDoApp/src/stores/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ToDoApp/src/stores/TodoListStore.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-166">
+        <state relative-caret-position="300">
+          <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
           <folding>
             <element signature="e#0#69#0" expanded="true" />
           </folding>
