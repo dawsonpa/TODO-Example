@@ -9,7 +9,7 @@ React Native, Mobx  TODO example application. Fully Offline with  persistence ac
 6. Run `npx react-native run-ios` Run the application on iOS simulator
 ##Caveats/Troubleshooting
 1. Make sure you have followed the official set up guid for react native found here https://reactnative.dev/docs/environment-setup make sure you follow the React Native CLI Quickstart setup 
-2. Has been tested and developed on iOS, However it should work on Android. Android support coming Soon
+2. Has been tested and developed on iOS, However it should work on Android.
 
 By Paul Dawson © PD4 Solutions LLC https://pd4consulting.com/
 
