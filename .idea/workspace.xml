@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfa0f356-aed6-41d0-8d9d-adc3deb5b610" name="Default Changelist" comment="5">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoApp/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoApp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoApp/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoApp/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,15 +17,6 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ToDoApp/src/components/AddEditToDoForm/AddEditTodoForm.tsx">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ToDoApp/index.js">
               <provider selected="true" editor-type-id="text-editor">
@@ -46,15 +34,6 @@
                   <folding>
                     <element signature="e#0#57#0" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ToDoApp/src/theme/baseStyles.ts">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
                 </state>
               </provider>
             </entry>
@@ -95,7 +74,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ToDoApp/src/stores/TodoListStore.ts">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="300">
@@ -103,6 +82,27 @@
                   <folding>
                     <element signature="e#0#69#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/README.md">
+              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+                <state split_layout="SPLIT">
+                  <first_editor relative-caret-position="45">
+                    <caret line="3" selection-start-line="3" selection-end-line="3" />
+                  </first_editor>
+                  <second_editor />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/ToDoApp/.gitignore">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="45">
+                  <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
                 </state>
               </provider>
             </entry>
@@ -313,6 +313,7 @@
         <option value="$PROJECT_DIR$/ToDoApp/src/services/ToDoService.ts" />
         <option value="$PROJECT_DIR$/ToDoApp/src/context/TodoListStoreContext.ts" />
         <option value="$PROJECT_DIR$/ToDoApp/src/stores/TodoListStore.ts" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -339,19 +340,6 @@
               <item name="TODO-Example" type="b2602c69:ProjectViewProjectNode" />
               <item name="TODO-Example" type="462c0819:PsiDirectoryNode" />
               <item name="ToDoApp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TODO-Example" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TODO-Example" type="462c0819:PsiDirectoryNode" />
-              <item name="ToDoApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TODO-Example" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TODO-Example" type="462c0819:PsiDirectoryNode" />
-              <item name="ToDoApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="stores" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -403,10 +391,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113985000" />
+    <option name="totallyTimeSpent" value="113993000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1877" y="27" width="1680" height="1015" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24954791" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -472,8 +461,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ToDoApp/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -639,8 +628,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ToDoApp/src/components/AddEditToDoForm/AddEditTodoForm.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
+        <state relative-caret-position="39">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -722,9 +714,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ToDoApp/yarn-error.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ToDoApp/yarn-error.log" />
     <entry file="file://$PROJECT_DIR$/ToDoApp/yarn.lock">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
