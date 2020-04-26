@@ -1,18 +1,31 @@
 import {action, computed, observable, runInAction, toJS} from "mobx";
 import Todo, {ITodo, PendingState} from "../models/Todo";
 import {todoService, ToDoService} from "../services";
+import {formatDates} from "../utils/time";
 
 export enum Filters {
-
+	COMPLETED='completed',
+	INCOMPLETED='incomplete',
+	ALL=''
 }
 export default class TodoListStore {
 	@observable list: Todo[] = [];
 	@observable state: PendingState = PendingState.DONE;
-	@observable filters: Filters[] = [];
+	@observable filter: Filters = Filters.ALL;
+	@observable searchTerm: string = '';
 	service: ToDoService = todoService;
 	constructor() {
 	}
 
+	@action
+	updateSearchTerm = (term: string) => {
+		this.searchTerm = term;
+	};
+
+	@action
+	updateFilter = (filter: Filters) => {
+		this.filter = filter;
+	};
 
 	@action
 	updateState = (state: PendingState) => {
@@ -21,12 +34,10 @@ export default class TodoListStore {
 
 	@action
 	addTodo = async (todo: ITodo) => {
-		console.log('hello g=addd')
 		try {
 			todo.id = new Date().getTime().toString();
 			this.updateState(PendingState.PENDING);
 			const created = await this.service.createToDo(todo);
-			console.log('cre', created);
 			runInAction(() => {
 				const newTodo = new Todo(created);
 				this.list.push(newTodo);
@@ -58,7 +69,6 @@ export default class TodoListStore {
 
 	@action
 	getAllTodos = async () => {
-		console.log('get all')
 		try {
 			this.updateState(PendingState.PENDING);
 			const todos: ITodo[] = await this.service.getAllToDos();
@@ -83,11 +93,9 @@ export default class TodoListStore {
 			runInAction(() => {
 				this.list.map((todo: Todo) => {
 					if(oldTodo.id === todo.id) {
-						console.log('updating, ', todo)
 						todo.updateTodo(created);
 					}
 				});
-				console.log(this.list.slice());
 				this.updateState(PendingState.DONE);
 			})
 		} catch (e) {
@@ -130,5 +138,38 @@ export default class TodoListStore {
 	@computed
 	get isError(): boolean {
 		return this.state === PendingState.ERROR;
+	}
+	@computed
+	get searchResults(): Todo[] {
+		let searchResults: Todo[] = this.list.slice();
+
+		if(!this.filter && !this.searchTerm) {
+			return searchResults;
+		}
+
+		if(this.filter) {
+			searchResults = searchResults.filter((todo: Todo) => {
+				if(this.filter === Filters.COMPLETED) {
+					return todo.completed
+				} else {
+					return !todo.completed;
+				}
+			})
+		}
+
+		if(searchResults) {
+			searchResults = searchResults.filter((todo: Todo) => {
+				const {completionDate, targetDate, name, description } = todo;
+				const testObj = {
+					completionDate: completionDate ? formatDates(completionDate).toLowerCase() : '',
+					targetDate: targetDate ? formatDates(targetDate).toLowerCase() : '',
+					name: name.toLowerCase(),
+					description: description.toLowerCase()
+				};
+				return Object.values(testObj).some(val => val.includes(this.searchTerm.toLowerCase()))})
+		}
+
+		return searchResults
+
 	}
 }

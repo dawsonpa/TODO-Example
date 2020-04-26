@@ -1,10 +1,12 @@
 import React, {FC} from 'react';
+
 import TodoListStore from '../../stores/TodoListStore'
 import Todo from '../../models/Todo'
 import { TodoListNavigationProp } from "../../navigation/NavigationContainer";
 import TodoItem from '../TodoItem/'
 import {EDIT_TODO_ROUTE} from "../../navigation/routes";
 import {useObserver} from "mobx-react-lite";
+import {FlatList} from "react-native";
 
 interface ITodoListProps {
 	todoList: TodoListStore,
@@ -49,11 +51,13 @@ const TodoList: FC<ITodoListProps> = ({ todoList, navigation}) => {
 	};
 
 	return useObserver(() =>(
-		<>
-			{
-				todoList.list.map((todo: Todo) => <TodoListItem todo={todo}/> )
-			}
-		</>
+		<FlatList
+			style={{marginBottom: 60, paddingBottom: 10}}
+			data={todoList.searchResults}
+			renderItem={({item}) => (
+				<TodoListItem todo={item}/>
+			)}
+		/>
 	))
 };
 

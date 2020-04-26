@@ -95,10 +95,8 @@ class Todo {
 	};
 	@action
 	toggleComplete = () => {
-		console.log('init', this.completionDate)
 		const completionDate = this.completionDate ? null : new Date();
 		this.updateCompletionDate(completionDate)
-		console.log('yoooof ain', this.completionDate)
 	}
 	@computed
 	get completed() {

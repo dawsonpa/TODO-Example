@@ -21,7 +21,7 @@ export interface IDateRow {
 const TodoItem: FC<ITodoItemProps> = ({ description, targetDate, completionDate, name, complete, late, toggleComplete, onEdit }) => {
 	const color = late ? colors.primary : complete ? Colors.green500 : Colors.grey500;
 	const iconName = !complete ? 'circle-outline' : 'checkbox-marked-circle-outline';
-	const buttonColor = !complete ? Colors.green500 : colors.primary;
+	const buttonColor = !complete ? Colors.green500 : colors.accent;
 
 	const DateRow: FC<IDateRow> = ({dateString, dateTitle}) => useObserver( () => (
 		<View  style={style.row}>
@@ -31,13 +31,12 @@ const TodoItem: FC<ITodoItemProps> = ({ description, targetDate, completionDate,
 	));
 
 	const ToggleCompleteButton: FC = () => {
-		console.log(name, description, 'name descripti')
-		const buttonText = !complete ? 'Complete' : 'Reset';
-		return useObserver(() => <Button onPress={async () => await toggleComplete()} style={{marginRight: 5}} color={buttonColor} mode={'contained'}>{buttonText}</Button>)
+		const buttonIcon = !complete ? 'playlist-check' : 'undo';
+		return useObserver(() => <FAB small  icon={buttonIcon} onPress={async () => await toggleComplete()}  style={{backgroundColor: buttonColor}} color={Colors.white}/>)
 	};
 
 	const EditButton = () => {
-		return <FAB small icon='pencil' onPress={onEdit} style={{backgroundColor: Colors.grey600}} color={Colors.grey100}/>
+		return <FAB small icon='pencil' onPress={onEdit} style={{backgroundColor: Colors.grey500, marginRight: 5}} color={Colors.white} />
 	}
 
 	const DateColumn: FC<> = () => {
@@ -69,9 +68,9 @@ const TodoItem: FC<ITodoItemProps> = ({ description, targetDate, completionDate,
 					/>}
 
 				</List.Accordion>
-				<View style={[style.fullWidth, style.justifySpaceBetween, style.row]}>
-					<ToggleCompleteButton/>
+				<View style={[style.fullWidth, {justifyContent: 'flex-end'}, style.row]}>
 					<EditButton/>
+					<ToggleCompleteButton/>
 				</View>
 			</Card.Content>
 		</Card>

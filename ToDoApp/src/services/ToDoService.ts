@@ -13,12 +13,9 @@ export default class ToDoService extends BaseService {
 	}
 
 	async createToDo(val: ITodo) {
-		console.log('begining to create', val, 'vall');
 		const todos = await this.getAllToDos();
-		console.log(todos, 'todont')
 		todos.push(val);
 		const result = await this.create(this.storageKey, JSON.stringify(todos));
-		console.log(result, 'res')
 		const updatedTodos = JSON.parse(result);
 		const updatedToDo = updatedTodos.find(((todo: ITodo) => todo.id ===val.id));
 		return updatedToDo;
@@ -34,9 +31,7 @@ export default class ToDoService extends BaseService {
 
 	async getAllToDos() {
 		const result = await this.get(this.storageKey);
-		console.log(result, 'all');
 		const todos = result ? JSON.parse(result): [];
-		console.log(todos, 'after');
 		return todos;
 
 	}
@@ -61,7 +56,7 @@ export default class ToDoService extends BaseService {
 	async deleteTodo(id: string) {
 		const todos = await this.getAllToDos();
 		const updatedTodos = todos.filter((todo: ITodo) => todo.id !== id);
-		const result = await this.update(this.storageKey, JSON.stringify(updatedTodos));
+		const result = await this.create(this.storageKey, JSON.stringify(updatedTodos));
 		return JSON.parse(result);
 	}
 

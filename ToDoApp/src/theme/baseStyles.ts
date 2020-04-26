@@ -24,6 +24,9 @@ const baseStyles = StyleSheet.create({
 	},
 	justifyEnd: {
 		justifyContent: 'flex-end'
+	},
+	marginBottom: {
+		marginBottom: 5
 	}
 });
 

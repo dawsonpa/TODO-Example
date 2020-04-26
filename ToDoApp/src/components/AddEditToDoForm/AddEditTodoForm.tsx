@@ -1,11 +1,12 @@
 import React, {FC, useState} from 'react'
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {Button, Colors, Subheading, TextInput} from "react-native-paper";
+import {Button, Colors, Subheading, TextInput, FAB} from "react-native-paper";
 import Todo, {ITodo} from "../../models/Todo";
 import styles from './AddEditTodoFormStyle'
-import {View, KeyboardAvoidingView} from "react-native";
+import {View, KeyboardAvoidingView, ScrollView} from "react-native";
 import {useObserver} from "mobx-react-lite";
 import {useStore} from "../../context/TodoListStoreContext";
+import colors from "../../theme/colors";
 
 interface IAddEditTodoFormProps {
 	addTodo: (todo: ITodo) => Promise<void>;
@@ -51,63 +52,55 @@ const AddEditTodoForm: FC<IAddEditTodoFormProps> = ({ edit, addTodo,editTodo,del
 	 	goBack();
 	 };
 	return useObserver(() => (
-		<KeyboardAvoidingView style={[styles.fullWidth, styles.column]}>
-			<TextInput
-				label={'Name'}
-				value={name}
-				onChangeText={text => setName(text)}
-			/>
-			<TextInput
-				label={'Description'}
-				value={description}
-				onChangeText={text => setDescription(text)}
-			/>
-			<Subheading>Target Date</Subheading>
-			<TextInput
-				style={{height: 50}}
-				render={() =>
-					<DateTimePicker
-						display='spinner'
-						value={targetDate}
-						onChange={(event, date) => {if (date) setTargetDate(date)}}
-					/>
-				}
-			/>
-			{edit && todo && todo.completed  ? <TextInput
-					label={'Completion Date'}
+		<KeyboardAvoidingView style={[styles.fullWidth, styles.column, {flex: 1}]}>
+			<View style={[styles.row,styles.justifyEnd, styles.fullWidth, styles.marginBottom]}>
+				<FAB icon={'delete'} onPress={onDelete} style={{backgroundColor: colors.primary, marginRight: 10}}/>
+				<FAB  icon={'content-save'}  onPress={onSave} style={{backgroundColor: Colors.green500}}/>
+			</View>
+			<ScrollView>
+				<TextInput
+					label={'Name'}
+					value={name}
+					onChangeText={text => setName(text)}
+					style={styles.marginBottom}
+				/>
+				<TextInput
+					label={'Description'}
+					value={description}
+					onChangeText={text => setDescription(text)}
+					style={styles.marginBottom}
+				/>
+				<Subheading>Target Date</Subheading>
+				<TextInput
+					style={styles.marginBottom}
 					render={() =>
 						<DateTimePicker
 							display='spinner'
-							value={completionDate}
-							onChange={(event, date) => {if (date) setCompletionDate(date)}}
-
+							value={targetDate}
+							onChange={(event, date) => {if (date) setTargetDate(date)}}
 						/>
 					}
-				/> :
-				<TextInput
-					label={'Completion Date'}
-					value={edit && todo && todo.completed ? completionDate.toISOString() : '--'}
-					editable={false}
 				/>
-			}
-			<View style={[styles.row, styles.justifySpaceBetween, styles.fullWidth]}>
-
-			</View>
-			<View style={[styles.row, styles.justifySpaceBetween, styles.fullWidth]}>
-
-
-			</View>
-			<View style={[styles.row,styles.justifyEnd, styles.fullWidth]}>
-				<Button mode={'contained'} onPress={onDelete} color={Colors.red100}>
-					Delete
-				</Button>
-				<Button onPress={goBack} mode={'contained'} color={Colors.grey100}>
-					Cancel
-				</Button>
-				<Button mode={'contained'} onPress={onSave} color={Colors.green100}>
-					Save
-				</Button>
-			</View>
+				{edit && todo && todo.completed  ? <>
+						<Subheading>Completion Date</Subheading>
+						<TextInput
+							style={styles.marginBottom}
+							render={() =>
+								<DateTimePicker
+									display='spinner'
+									value={completionDate}
+									onChange={(event, date) => {if (date) setCompletionDate(date)}}
+								/>
+							}
+						/></> :
+					<TextInput
+						label={'Completion Date'}
+						style={styles.marginBottom}
+						value={edit && todo && todo.completed ? completionDate.toISOString() : '--'}
+						editable={false}
+					/>
+				}
+			</ScrollView>
 		</KeyboardAvoidingView>
 	))
 };
