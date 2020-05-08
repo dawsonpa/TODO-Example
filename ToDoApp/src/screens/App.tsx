@@ -19,9 +19,18 @@ import TodoListStore from '../stores/TodoListStore'
 import NavigationContainer from '../navigation/NavigationContainer'
 import {Provider as PaperProvider, Surface} from 'react-native-paper'
 import theme from '../theme/theme'
+import DatabaseService, {databaseService} from "../services/database/DatabaseService";
+import {getConnection, getRepository} from "typeorm";
+import TodoSchema from "../entities/Todo";
 
 const App = () => {
   const todoListStore = new TodoListStore();
+
+  useEffect(() => {
+    (async () => {
+      await databaseService.refreshConnection();
+    })()
+  }, [])
 
   return (
     <>

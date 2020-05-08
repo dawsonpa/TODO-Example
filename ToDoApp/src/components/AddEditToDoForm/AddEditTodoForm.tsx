@@ -7,6 +7,7 @@ import {View, KeyboardAvoidingView, ScrollView} from "react-native";
 import {useObserver} from "mobx-react-lite";
 import {useStore} from "../../context/TodoListStoreContext";
 import colors from "../../theme/colors";
+import {ITodoEntity} from "../../entities/Todo";
 
 interface IAddEditTodoFormProps {
 	addTodo: (todo: ITodo) => Promise<void>;
@@ -25,7 +26,7 @@ const AddEditTodoForm: FC<IAddEditTodoFormProps> = ({ edit, addTodo,editTodo,del
 	const [targetDate, setTargetDate] = useState(edit && todo && todo.targetDate ? todo.targetDate: new Date());
 	const [completionDate, setCompletionDate] = useState(edit && todo && todo.completionDate ? todo.completionDate : new Date());
 	const onSave= async () => {
-		const newTodo: ITodo = {
+		const newTodo: ITodoEntity = {
 			name,
 			description,
 			targetDate

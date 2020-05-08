@@ -1,6 +1,6 @@
 import AsyncStorage, {AsyncStorageStatic} from '@react-native-community/async-storage';
 
-class BaseService {
+class AsyncStorageService {
 	service : AsyncStorageStatic = AsyncStorage;
 
 	async get(key: string): Promise<string> {
@@ -26,4 +26,4 @@ class BaseService {
 }
 
 
-export default BaseService
+export default AsyncStorageService

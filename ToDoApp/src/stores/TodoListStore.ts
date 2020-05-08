@@ -1,7 +1,8 @@
 import {action, computed, observable, runInAction, toJS} from "mobx";
-import Todo, {ITodo, PendingState} from "../models/Todo";
-import {todoService, ToDoService} from "../services";
+import Todo, {PendingState} from "../models/Todo";
 import {formatDates} from "../utils/time";
+import TodoServiceManager, {todoServiceManager} from "../services/managers/TodoServiceManager";
+import {ITodoEntity} from "../entities/Todo";
 
 export enum Filters {
 	COMPLETED='completed',
@@ -13,7 +14,7 @@ export default class TodoListStore {
 	@observable state: PendingState = PendingState.DONE;
 	@observable filter: Filters = Filters.ALL;
 	@observable searchTerm: string = '';
-	service: ToDoService = todoService;
+	service: TodoServiceManager = todoServiceManager;
 	constructor() {
 	}
 
@@ -33,20 +34,23 @@ export default class TodoListStore {
 	};
 
 	@action
-	addTodo = async (todo: ITodo) => {
+	addTodo = async (todo: ITodoEntity) => {
 		try {
-			todo.id = new Date().getTime().toString();
 			this.updateState(PendingState.PENDING);
-			const created = await this.service.createToDo(todo);
+			console.log(todo, 'hello')
+			const created = await this.service.createOne(todo);
+			console.log(created, 'created')
 			runInAction(() => {
-				const newTodo = new Todo(created);
-				this.list.push(newTodo);
+				if(created) {
+					const newTodo = new Todo(created);
+					this.list.push(newTodo);
+				}
 				this.updateState(PendingState.DONE);
 			})
 		} catch (e) {
+			console.log(e, 'ererer')
 			runInAction(() => {
 				this.updateState(PendingState.ERROR);
-
 			})
 		}
 	};
@@ -55,7 +59,7 @@ export default class TodoListStore {
 	removeTodo = async (todo: Todo) => {
 		try {
 			this.updateState(PendingState.PENDING);
-			await this.service.deleteTodo(todo.id);
+			await this.service.deleteOne(todo.id);
 			runInAction(() => {
 				this.list.splice(this.list.indexOf(todo), 1);
 				this.updateState(PendingState.DONE)
@@ -66,38 +70,47 @@ export default class TodoListStore {
 			})
 		}
 	};
-
 	@action
 	getAllTodos = async () => {
 		try {
 			this.updateState(PendingState.PENDING);
-			const todos: ITodo[] = await this.service.getAllToDos();
+			const todos: ITodoEntity[] | undefined = await this.service.getAll();
+			console.log(todos, 'todos')
 			runInAction(() => {
-				const newTodos: Todo[] = [];
-				todos.forEach((todo: ITodo) => newTodos.push(new Todo(todo)));
-				this.list = newTodos;
+				if(todos && todos.length) {
+					const newTodos: Todo[] = [];
+					todos.forEach((todo: ITodoEntity) => {
+						if(todo.id) {
+							newTodos.push(new Todo(todo))
+						}
+					});
+					this.list = newTodos;
+				}
 				this.updateState(PendingState.DONE)
 			})
 		} catch(e) {
+			console.log(e, 'errorereererrrere')
 			runInAction(() => {
 				this.updateState(PendingState.ERROR);
 			})
 		}
 	};
-
 	@action
-	updateTodo = async (updatedTodo: ITodo, oldTodo: Todo) => {
+	updateTodo = async (updatedTodo: ITodoEntity, oldTodo: Todo) => {
 		try {
 			this.updateState(PendingState.PENDING);
-			const created = await this.service.updateToDo(updatedTodo);
-			runInAction(() => {
-				this.list.map((todo: Todo) => {
-					if(oldTodo.id === todo.id) {
-						todo.updateTodo(created);
-					}
-				});
-				this.updateState(PendingState.DONE);
-			})
+			if(oldTodo.id) {
+				const created = await this.service.updateOne(oldTodo.id, updatedTodo);
+				runInAction(() => {
+					this.list.map((todo: Todo) => {
+						if(oldTodo.id === todo.id && created) {
+							todo.updateTodo(created);
+						}
+					});
+					this.updateState(PendingState.DONE);
+				})
+			}
+			this.updateState(PendingState.DONE);
 		} catch (e) {
 			runInAction(() => {
 				this.updateState(PendingState.ERROR);
@@ -105,16 +118,12 @@ export default class TodoListStore {
 			})
 		}
 	};
-
 	@action
 	toggleComplete = async (todo: Todo) => {
 		todo.toggleComplete();
-		const updatedTodo: ITodo = toJS(todo);
+		const updatedTodo: ITodoEntity = toJS(todo);
 		await this.updateTodo(updatedTodo, todo)
 	};
-
-
-
 	@computed
 	get completedTodos(): Todo[] {
 		return this.list.filter(todo => todo.completed);
@@ -124,7 +133,7 @@ export default class TodoListStore {
 	get incompleteTodos(): Todo[] {
 		return this.list.filter(todo => !todo.completed);
 	}
-	
+
 	@computed
 	get lateToDos(): Todo[] {
 		return this.list.filter(todo => todo.late);
@@ -156,7 +165,6 @@ export default class TodoListStore {
 				}
 			})
 		}
-
 		if(searchResults) {
 			searchResults = searchResults.filter((todo: Todo) => {
 				const {completionDate, targetDate, name, description } = todo;
@@ -168,8 +176,6 @@ export default class TodoListStore {
 				};
 				return Object.values(testObj).some(val => val.includes(this.searchTerm.toLowerCase()))})
 		}
-
 		return searchResults
-
 	}
 }

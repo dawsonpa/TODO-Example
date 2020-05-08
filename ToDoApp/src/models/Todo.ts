@@ -1,5 +1,6 @@
 import { observable, action, computed} from "mobx";
 import { ToDoService, todoService }  from '../services'
+import {ITodoEntity} from "../entities/Todo";
 
 export enum PendingState  {
 	PENDING = 'pending',
@@ -7,35 +8,29 @@ export enum PendingState  {
 	ERROR = 'error'
 }
 
-export interface ITodo {
+export interface ITodo extends ITodoEntity {
 	name?: string;
 	description?: string;
-	targetDate?: Date | string | null;
-	completionDate?: Date | string | null;
+	targetDate?: Date ;
+	completionDate?: Date;
 	state?: PendingState;
-	id?: string
+	id: number
 
 }
 
-class Todo {
-	id: string;
+class Todo implements ITodo {
+	id: number;
 	service: ToDoService = todoService;
 
 	@observable name: string = '';
 	@observable description: string='';
-	@observable targetDate: Date | null = null;
-	@observable completionDate: Date | null = null;
+	@observable targetDate?: Date;
+	@observable completionDate?: Date
 	@observable state: PendingState = PendingState.DONE;
 
-	constructor(todo: ITodo) {
+	constructor(todo: ITodoEntity) {
+		this.id = todo.id || Math.floor(Math.random() * 100)
 		this.updateTodo(todo);
-
-		const { id } = todo;
-		if(id) {
-			this.id = id;
-		} else {
-			this.id = new Date().getTime().toString()
-		}
 	}
 
 	@action
@@ -48,7 +43,7 @@ class Todo {
 		if(targetDate) {
 			this.targetDate = new Date(targetDate);
 		} else {
-			this.targetDate = null;
+			this.targetDate = undefined;
 		}
 	};
 
@@ -57,7 +52,7 @@ class Todo {
 		if(completionDate) {
 			this.completionDate = new Date(completionDate);
 		} else {
-			this.completionDate = null;
+			this.completionDate = undefined;
 		}
 	};
 
@@ -70,12 +65,12 @@ class Todo {
 		this.description = description;
 	};
 	@action
-	updateTodo = (updatedTodo: ITodo) => {
+	updateTodo = (updatedTodo: ITodoEntity) => {
 		const {
 			name,
 			description,
 			completionDate,
-			targetDate
+			targetDate,
 		} = updatedTodo;
 		if(completionDate) {
 			this.updateCompletionDate(completionDate)
@@ -92,6 +87,7 @@ class Todo {
 		if(targetDate) {
 			this.updateTargetDate(targetDate);
 		}
+
 	};
 	@action
 	toggleComplete = () => {
@@ -111,7 +107,6 @@ class Todo {
 		}
 		return this.completionDate && this.targetDate && this.completionDate.getTime() > this.targetDate.getTime() ? true : false;
 	}
-
 }
 
 export default Todo

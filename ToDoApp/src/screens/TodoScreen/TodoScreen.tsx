@@ -22,6 +22,7 @@ const TodoScreen: React.FC<ITodoScreenProps> = ({navigation}) => {
 	useFocusEffect(
 		useCallback(() => {
 			(async () => {
+				console.log('getting all')
 				await store.getAllTodos();
 			})()
 		},[store.list.length])

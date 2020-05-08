@@ -1,9 +1,9 @@
-import BaseService from "./BaseService";
+import AsyncStorageService from "./AsyncStorageService";
 import {ITodo} from "../models/Todo";
 
 export const TODOS_KEY = '@todos';
 
-export default class ToDoService extends BaseService {
+export default class ToDoService extends AsyncStorageService {
 	readonly storageKey: string = TODOS_KEY;
 	constructor(storageKey?: string) {
 		super();

@@ -26,6 +26,7 @@ const TodoList: FC<ITodoListProps> = ({ todoList, navigation}) => {
 			description,
 			late,
 			name,
+			id
 		} = todo;
 
 		const onEdit = () => {
@@ -45,6 +46,7 @@ const TodoList: FC<ITodoListProps> = ({ todoList, navigation}) => {
 				name={name}
 				description={description}
 				late={late}
+				id={id}
 				onEdit={onEdit}
 			/>
 		)
@@ -54,6 +56,7 @@ const TodoList: FC<ITodoListProps> = ({ todoList, navigation}) => {
 		<FlatList
 			style={{marginBottom: 60, paddingBottom: 10}}
 			data={todoList.searchResults}
+			keyExtractor={(item) => item.id.toString()}
 			renderItem={({item}) => (
 				<TodoListItem todo={item}/>
 			)}

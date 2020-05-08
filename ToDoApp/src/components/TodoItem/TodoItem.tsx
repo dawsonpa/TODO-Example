@@ -23,31 +23,13 @@ const TodoItem: FC<ITodoItemProps> = ({ description, targetDate, completionDate,
 	const iconName = !complete ? 'circle-outline' : 'checkbox-marked-circle-outline';
 	const buttonColor = !complete ? Colors.green500 : colors.accent;
 
-	const DateRow: FC<IDateRow> = ({dateString, dateTitle}) => useObserver( () => (
-		<View  style={style.row}>
-			<Text style={style.bold} >{dateTitle}</Text>
-			<Text>{dateString}</Text>
-		</View>
-	));
-
 	const ToggleCompleteButton: FC = () => {
 		const buttonIcon = !complete ? 'playlist-check' : 'undo';
 		return useObserver(() => <FAB small  icon={buttonIcon} onPress={async () => await toggleComplete()}  style={{backgroundColor: buttonColor}} color={Colors.white}/>)
 	};
-
 	const EditButton = () => {
 		return <FAB small icon='pencil' onPress={onEdit} style={{backgroundColor: Colors.grey500, marginRight: 5}} color={Colors.white} />
 	}
-
-	const DateColumn: FC<> = () => {
-		return useObserver(() => (
-			<View style={style.column}>
-				{targetDate &&<DateRow dateString={targetDate.toString()} dateTitle={'Target Date'}/>}
-				{completionDate && <DateRow dateString={completionDate.toString()} dateTitle={'Completion Date'}/>}
-			</View>
-		))
-	};
-
 	return useObserver(() => (
 		<Card style={{marginTop: 30, backgroundColor: colors.background}} >
 			<Card.Content>
@@ -66,7 +48,6 @@ const TodoItem: FC<ITodoItemProps> = ({ description, targetDate, completionDate,
 						description={formatDates(completionDate as Date)}
 						left={props => <List.Icon {...props}  icon={'calendar'}/>}
 					/>}
-
 				</List.Accordion>
 				<View style={[style.fullWidth, {justifyContent: 'flex-end'}, style.row]}>
 					<EditButton/>

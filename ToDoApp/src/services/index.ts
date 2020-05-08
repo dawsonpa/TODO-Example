@@ -1,8 +1,8 @@
 import ToDoService, {todoService} from './ToDoService'
-import BaseService from './BaseService'
+import AsyncStorageService from './AsyncStorageService'
 
 export  {
-	BaseService,
+	AsyncStorageService,
 	ToDoService,
 	todoService
 }
