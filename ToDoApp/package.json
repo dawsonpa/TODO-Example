@@ -21,7 +21,7 @@
     "@types/react-native-uuid-generator": "^4.0.0",
     "mobx": "^5.15.4",
     "mobx-react-lite": "^2.0.6",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-gesture-handler": "^1.6.1",
